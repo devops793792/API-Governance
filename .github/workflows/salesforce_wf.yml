@@ -1,0 +1,27 @@
+name: Code Scan
+
+on: [push]
+
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+
+    - name: Install API Governance CLI
+      run: |
+        curl -OL https://github.com/mulesoft/api-governance-cli/releases/download/v1.2.2/api-governance-cli-1.2.2-linux.tar.gz
+        tar xzf api-governance-cli-1.2.2-linux.tar.gz
+        sudo mv api-governance-cli /usr/local/bin/api-governance-cli
+
+    - name: Scan RAML file
+      run: |
+        api-governance-cli scan \
+          --apiKey "$API_KEY" \
+          --organizationId "{organizationId}" \
+          --apiId "{apiId}" \
+          --revisionId "{revisionId}" \
+          --ramlPath "path/to/your/raml/file.raml"
