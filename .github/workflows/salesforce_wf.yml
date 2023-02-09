@@ -5,13 +5,12 @@ on: [push]
 
 jobs:
   scan:
-    runs-on: [self-hosted, test, ubuntu]
+    runs-on: [self-hosted, test, test2]
 
     steps:
     - name: Checkout Code
       uses: actions/checkout@v2
       
-    - name: Set-up NodeJS version 16
-      uses: actions/setup-node@v3
-      with:
-            node-version: 16
+    - name: Scan RAML file
+      run: |
+        anypoint-cli governance profile create "profile 3 from CLI" 68ef9520-24e9-4cf2-b2f5-620025690913/anypoint-best-practices/latest 68ef9520-24e9-4cf2-b2f5-620025690913/asyncapi-best-practices/latest 68ef9520-24e9-4cf2-b2f5-620025690913/authentication-security-best-practices/latest 68ef9520-24e9-4cf2-b2f5-620025690913/openapi-best-practices/latest 68ef9520-24e9-4cf2-b2f5-620025690913/required-examples/latest --criteria "tag:oas,category:API Type:Experience API,status:development,scope:rest-api" --description "test profile for Best Practices"
