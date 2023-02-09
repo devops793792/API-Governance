@@ -15,7 +15,3 @@ jobs:
       uses: actions/setup-node@v3
       with:
             node-version: 16
-
-    - name: Install API Governance CLI
-      run: |
-        npm i -g anypoint-cli@latest
