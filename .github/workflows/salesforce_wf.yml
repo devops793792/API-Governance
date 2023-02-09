@@ -10,9 +10,12 @@ jobs:
     steps:
     - name: Checkout Code
       uses: actions/checkout@v2
+      
+    - name: Set-up NodeJS version 16
+      uses: actions/setup-node@v3
+      with:
+            node-version: 16
 
     - name: Install API Governance CLI
       run: |
-        curl -OL https://github.com/mulesoft/api-governance-cli/releases/download/v1.2.2/api-governance-cli-1.2.2-linux.tar.gz
-        tar xzf api-governance-cli-1.2.2-linux.tar.gz
-        sudo mv api-governance-cli /usr/local/bin/api-governance-cli
+        npm i -g anypoint-cli@latest
