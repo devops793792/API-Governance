@@ -11,7 +11,7 @@ jobs:
       uses: actions/checkout@v2
       
     - name: Scan RAML file
-      run: |=
+      run: |
         anypoint-cli governance profile list -o text
         anypoint-cli governance profile info 3558a6d9-ffcd-466a-b5d0-1a593a17edc8 --output text
         anypoint-cli governance api validate demo
