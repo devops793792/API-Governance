@@ -1,0 +1,44 @@
+#%RAML 1.0
+title: demo
+baseUri: http://localhost:8081/api/getRetrive
+traits:
+  authHeaders:
+    headers:
+      correlationId:
+        type: string
+      appName:
+        type: string
+      client_id:
+        type: string
+      client_secret:
+        type: string
+  authQuery:
+    queryParameters:
+      server:
+        type: string
+
+
+/retrive:
+  /{docPath}:
+    uriParameters:
+      docPath:
+        type: string
+        example: "\\abcd\adf\adfffd"
+    get:
+
+      is:
+        - authHeaders
+        - authQuery
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                {
+                  "code": "123",
+                  "statusMsg": "flhadsjkl"
+                }
+    
+      
+    
+
