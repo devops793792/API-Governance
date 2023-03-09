@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   scan:
-    runs-on: [self-hosted, test, test2]
+    runs-on: [self-hosted, mule]
 
     steps:
     - name: Checkout Code
@@ -13,6 +13,5 @@ jobs:
     - name: Scan RAML file
       run: |
         anypoint-cli governance profile list -o text
-        anypoint-cli governance profile info 3558a6d9-ffcd-466a-b5d0-1a593a17edc8 --output text
-        anypoint-cli governance api validate demo
+        anypoint-cli governance api validate --remote-rulesets 68ef9520-24e9-4cf2-b2f5-620025690913/openapi-best-practices/1.0.0 /home/ubuntu/actions-runner/_work/salesforcetest/salesforcetest/demo
         
