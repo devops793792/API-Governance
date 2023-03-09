@@ -14,4 +14,6 @@ jobs:
       run: |
         anypoint-cli governance profile list -o text
         anypoint-cli governance api validate --remote-rulesets 68ef9520-24e9-4cf2-b2f5-620025690913/openapi-best-practices/1.0.0 /home/ubuntu/actions-runner/_work/salesforcetest/salesforcetest/demo
+        echo "------------------------"
+        anypoint-cli governance api validate --remote-rulesets 68ef9520-24e9-4cf2-b2f5-620025690913/authentication-security-best-practices/1.0.0,68ef9520-24e9-4cf2-b2f5-620025690913/openapi-best-practices/1.0.0 /home/ubuntu/actions-runner/_work/salesforcetest/salesforcetest/demo 
         
